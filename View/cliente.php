@@ -6,9 +6,9 @@
     <body>
 
         <?php
-        echo "nome: {$cliente->nome}<br/>";
-        echo "email: {$cliente->email}<br/>";
-        echo "senha: {$cliente->senha}<br/>";
+        echo "nome: {$cliente['nome']}<br/>";
+        echo "email: {$cliente['email']}<br/>";
+        echo "senha: {$cliente['senha']}<br/>";
         ?>
 
     </body>
