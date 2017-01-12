@@ -1,5 +1,6 @@
 <?php
 
+require_once 'config.php';
 require_once 'Controller/Controller.php';
 
 $controller = new Controller();
