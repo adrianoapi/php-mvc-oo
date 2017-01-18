@@ -14,7 +14,7 @@ if (!defined('DEBUG') || DEBUG === false) {
     ini_set("display_errors", 1);
 }
 
-//require_once DIR_PATH . '/functions/global-functions.php';
+require_once ABSPATH . '/functions/global-functions.php';
 
-//$tutsup_mvc = new DefaultMVC();
+$tutsup_mvc = new DefaultMVC();
 
