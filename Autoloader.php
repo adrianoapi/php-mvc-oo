@@ -11,6 +11,21 @@ class Autoloader
             if (class_exists($className)) {
                 return TRUE;
             }
+        } elseif (file_exists($filename = "Model/" . str_replace('\\', '/', $className) . ".php")) {
+            include($filename);
+            if (class_exists($className)) {
+                return TRUE;
+            }
+        } elseif (file_exists($filename = "Service/" . str_replace('\\', '/', $className) . ".php")) {
+            include($filename);
+            if (class_exists($className)) {
+                return TRUE;
+            }
+        } elseif (file_exists($filename = "Interface/" . str_replace('\\', '/', $className) . ".php")) {
+            include($filename);
+            if (class_exists($className)) {
+                return TRUE;
+            }
         } elseif (file_exists($filename = "classes/" . str_replace('\\', '/', $className) . ".php")) {
             include($filename);
             if (class_exists($className)) {

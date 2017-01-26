@@ -1,7 +1,5 @@
 <?php
 
-require_once 'Model/Model.php';
-
 class ClienteController
 {
 
@@ -9,7 +7,7 @@ class ClienteController
 
     public function __construct()
     {
-        $this->model = new Model();
+        $this->model = new ClienteModel();
     }
 
     public function index($parametros)
@@ -22,7 +20,7 @@ class ClienteController
     {
         $id = $array[0];
         if (!is_numeric($id))
-            die("erro");
+            die("Erro: O parâmetro informado é inválido!");
         $cliente = $this->model->getCliente($id);
         include 'View/cliente.php';
     }
