@@ -3,14 +3,28 @@
 class ClienteModel extends ClienteService implements ICliente
 {
 
+    private $db;
     private $service;
+    private $id;
     private $nome;
     private $email;
     private $senha;
 
     public function __construct()
     {
-        $this->service = new ClienteService($this);
+        $this->db = new Conn();
+        $this->service = new ClienteService($this->db, $this);
+    }
+
+    public function getId()
+    {
+        return (int) $this->id;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
     }
 
     public function getNome()
@@ -48,33 +62,13 @@ class ClienteModel extends ClienteService implements ICliente
 
     public function getClienteList()
     {
-
-        $this->setNome("Adriano A Costa");
-        $this->setEmail("sdcomputadores@gmail.com");
-        $this->setSenha("#__098ii");
-        $arr1 = $this->service->selectCliente();
-
-        $this->setNome("João Alves Silva");
-        $this->setEmail("jsilva@hotmail.com");
-        $this->setSenha("jsilva");
-        $arr2 = $this->service->selectCliente();
-
-        $this->setNome("Katia Kasuko");
-        $this->setEmail("k_kasuko@yahoo.com");
-        $this->setSenha("kaska");
-        $arr3 = $this->service->selectCliente();
-
-        return array(
-            '1' => $arr1,
-            '2' => $arr2,
-            '3' => $arr3,
-        );
+        return $this->service->selectClientes();
     }
 
     public function getCliente($id)
     {
-        $clientes = $this->getClienteList();
-        return $clientes[$id];
+        $this->setId($id);
+        return $this->service->selectCliente();
     }
 
 }

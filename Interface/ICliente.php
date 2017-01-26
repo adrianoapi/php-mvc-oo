@@ -3,6 +3,10 @@
 interface ICliente
 {
 
+    public function setId($id);
+
+    public function getId();
+
     public function getNome();
 
     public function setNome($nome);

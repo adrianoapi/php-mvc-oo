@@ -1,7 +1,5 @@
 <?php
 
-require_once 'Interface/IConn.php';
-
 class Conn implements IConn
 {
 
@@ -10,12 +8,12 @@ class Conn implements IConn
     private $user;
     private $pass;
 
-    public function __construct($host, $dbname, $user, $pass)
+    public function __construct($host = null, $dbname = null, $user = null, $pass = null)
     {
-        $this->host = $host;
-        $this->dbname = $dbname;
-        $this->user = $user;
-        $this->pass = $pass;
+        $this->host = defined('HOSTNAME') ? HOSTNAME : $this->host;
+        $this->dbname = defined('DB_NAME') ? DB_NAME : $this->dbname;
+        $this->user = defined('DB_USER') ? DB_USER : $this->user;
+        $this->pass = defined('DB_PASSWORD') ? DB_PASSWORD : $this->pass;
     }
 
     public function connect()
