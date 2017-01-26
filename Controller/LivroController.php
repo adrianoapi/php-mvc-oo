@@ -2,7 +2,7 @@
 
 require_once 'Model/Model.php';
 
-class Controller
+class LivroController
 {
 
     private $model;
@@ -12,7 +12,7 @@ class Controller
         $this->model = new Model();
     }
 
-    public function invoke()
+    public function index()
     {
         if (!isset($_GET['cliente'])) {
             $clientes = $this->model->getClienteList();

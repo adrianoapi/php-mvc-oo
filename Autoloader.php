@@ -11,7 +11,7 @@ class Autoloader
             if (class_exists($className)) {
                 return TRUE;
             }
-        } elseif (file_exists($filename = "api/view/" . str_replace('\\', '/', $className) . ".php")) {
+        } elseif (file_exists($filename = "classes/" . str_replace('\\', '/', $className) . ".php")) {
             include($filename);
             if (class_exists($className)) {
                 return TRUE;

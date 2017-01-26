@@ -1,26 +1,31 @@
 <?php
 
-class HomeController extends MainController
+require_once 'Model/Model.php';
+
+class HomeController
 {
+
+    private $model;
+
+    public function __construct()
+    {
+        $this->model = new Model();
+    }
+
+    public function invoke()
+    {
+        if (!isset($_GET['cliente'])) {
+            $clientes = $this->model->getClienteList();
+            include 'View/cliente-listagem.php';
+        } else {
+            $cliente = $this->model->getCliente($_GET['cliente']);
+            include 'View/cliente.php';
+        }
+    }
 
     public function index()
     {
-        $this->title = 'Home';
-
-        // Parametros da função
-        $parametros = ( func_num_args() >= 1 ) ? func_get_arg(0) : array();
-
-
-        require ABSPATH . '/views/_includes/header.php';
-
-        require ABSPATH . '/views/_includes/menu.php';
-
-        require ABSPATH . '/views/home/home-view.php';
-        echo "<pre>";
-        print_r($parametros);
-        echo "</pre>";
-
-        require ABSPATH . '/views/_includes/footer.php';
+        $this->invoke();
     }
 
 }
