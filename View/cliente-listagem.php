@@ -14,7 +14,7 @@
             <?php
             foreach ($clientes as $key => $cliente) {
                 echo '<tr>'
-                . '<td><a href="index.php?cliente=' . $key . '">' . $cliente['nome'] . '</a></td>'
+                . '<td><a href="cliente/visualizar/' . $key . '">' . $cliente['nome'] . '</a></td>'
                 . '<td>' . $cliente['email'] . '</td>'
                 . '<td>' . $cliente['senha'] . '</td>'
                 . '</tr>';

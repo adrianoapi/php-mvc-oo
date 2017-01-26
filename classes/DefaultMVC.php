@@ -15,27 +15,18 @@ class DefaultMVC
     {
 
         $this->get_url_data();
-
         if (!$this->controlador) {
-
             require_once ABSPATH . '/Controller/HomeController.php';
             $this->controlador = new HomeController();
             $this->controlador->index();
             return;
         }
-
-        // Se o arquivo do controlador não existir, não faremos nada
         if (!file_exists(ABSPATH . '/Controller/' . $this->controlador . '.php')) {
-            // Página não encontrada
             require_once ABSPATH . $this->not_found;
-
-            // FIM :)
             return;
         }
-
         require_once ABSPATH . '/Controller/' . $this->controlador . '.php';
         $this->controlador = preg_replace('/[^a-zA-Z]/i', '', $this->controlador);
-
         if (!class_exists($this->controlador)) {
             require_once ABSPATH . $this->not_found;
             return;
@@ -56,15 +47,11 @@ class DefaultMVC
 
     public function get_url_data()
     {
-
         if (isset($_GET['path'])) {
             $path = $_GET['path'];
             $path = rtrim($path, '/');
             $path = filter_var($path, FILTER_SANITIZE_URL);
             $path = explode('/', $path);
-            echo "<pre>";
-            print_r($path);
-            echo "</pre>";
             $this->controlador = chk_array($path, 0);
             $this->controlador .= 'Controller';
             $this->acao = chk_array($path, 1);
