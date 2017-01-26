@@ -9,11 +9,11 @@ class DefaultMVC
     private $controlador;
     private $acao;
     private $parametros;
-    private $not_found = '/includes/404.php';
+    public $not_found;
 
     public function __construct()
     {
-
+        $this->not_found = '/includes/404.php';
         $this->get_url_data();
         if (!$this->controlador) {
             require_once ABSPATH . '/Controller/HomeController.php';

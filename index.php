@@ -14,6 +14,3 @@ require_once ABSPATH . '/functions/global-functions.php';
 require_once 'Autoloader.php';
 
 $tutsup_mvc = new DefaultMVC();
-
-//$controller = new Controller();
-//$controller->invoke();

@@ -18,9 +18,12 @@ class ClienteController
         include 'View/cliente-listagem.php';
     }
 
-    public function visualizar($x)
+    public function visualizar($array)
     {
-        $cliente = $this->model->getCliente($x[0]);
+        $id = $array[0];
+        if (!is_numeric($id))
+            die("erro");
+        $cliente = $this->model->getCliente($id);
         include 'View/cliente.php';
     }
 
