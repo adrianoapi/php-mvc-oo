@@ -10,6 +10,7 @@ define('DB_USER', 'root');
 define('DB_PASSWORD', '');
 define('DB_CHARSET', 'utf8');
 define('DEBUG', true);
+//header('Content-Type: text/html; charset=utf-8');
 require_once ABSPATH . '/functions/global-functions.php';
 require_once 'Autoloader.php';
 

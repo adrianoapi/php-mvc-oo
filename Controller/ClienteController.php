@@ -4,10 +4,12 @@ class ClienteController
 {
 
     private $model;
+    private $library;
 
     public function __construct()
     {
         $this->model = new ClienteModel();
+        $this->library = new Library();
     }
 
     public function index($parametros)
