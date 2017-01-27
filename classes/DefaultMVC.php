@@ -31,7 +31,6 @@ class DefaultMVC
             require_once ABSPATH . $this->not_found;
             return;
         }
-        print_r($this->acao);
         $this->controlador = new $this->controlador($this->parametros);
         $this->acao = preg_replace('/[^a-zA-Z]/i', '', $this->acao);
         if (method_exists($this->controlador, $this->acao)) {
@@ -61,7 +60,6 @@ class DefaultMVC
                 $this->parametros = array_values($path);
             } else {
                 $this->acao = chk_array($path, 1);
-                print_r($path);
                 if (chk_array($path, 2)) {
                     unset($path[0]);
                     unset($path[1]);

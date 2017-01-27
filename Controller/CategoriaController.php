@@ -11,12 +11,12 @@ class CategoriaController
     public function index($x)
     {
         echo "categoria index";
-        print_r($x);
         echo "<hr>";
-        if (isset($x) > 0) {
+        if (count($x) > 0) {
+            echo "<pre>";
             print_r($x);
         } else {
-            echo "Exibe tudo";
+            echo "Listagem de tudo";
         }
     }
 
