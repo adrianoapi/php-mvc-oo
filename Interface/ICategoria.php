@@ -1,12 +1,12 @@
 <?php
 
-class ICategoria
+interface ICategoria
 {
 
     public function getId();
     public function setId($id);
-    public function getIdPai();
-    public function setIdPai($id);
+    public function getCategoriaId();
+    public function setCategoriaId($id);
     public function getNome();
     public function setNome($nome);
 }

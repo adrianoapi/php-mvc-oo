@@ -3,14 +3,15 @@
 class CategoriaModel extends CategoriaService implements ICategoria
 {
 
+    private $service;
     private $id;
-    private $id_pai;
+    private $categoria_id;
     private $nome;
 
     public function __construct()
     {
         $this->db = new Conn();
-        $this->service = new ClienteService($this->db, $this);
+        $this->service = new CategoriaService($this->db, $this);
     }
 
     function getId()
@@ -24,14 +25,14 @@ class CategoriaModel extends CategoriaService implements ICategoria
         return $this;
     }
 
-    public function getIdPai()
+    public function getCategoriaId()
     {
-        return $this->id_pai;
+        return $this->categoria_id;
     }
 
-    public function setIdPai($id)
+    public function setCategoriaId($id)
     {
-        $this->id_pai = $id;
+        $this->categoria_id = $id;
         return $this;
     }
 
@@ -44,6 +45,11 @@ class CategoriaModel extends CategoriaService implements ICategoria
     {
         $this->nome = $nome;
         return $this;
+    }
+
+    public function getCategoriaList()
+    {
+        return $this->service->selectCategorias();
     }
 
 }
